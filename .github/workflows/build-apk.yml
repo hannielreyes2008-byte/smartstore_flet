@@ -9,14 +9,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install dependencies
+      - name: Install flet
         run: |
           pip install flet
-          pip install flet-cli
       - name: Build APK
-        run: flet build apk --yes
+        run: |
+          export FLUTTER_ROOT=/opt/flutter
+          flet build apk --yes --flutter-flags "--no-interactive"
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: smartstore-apk
+          name: my-apk
           path: build/apk/*.apk
