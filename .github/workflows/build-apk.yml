@@ -9,17 +9,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Setup Flutter
-        run: |
-          git clone https://github.com/flutter/flutter.git --depth 1 -b stable
-          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
-          flutter doctor
       - name: Install flet
-        run: pip install flet
+        run: |
+          pip install flet
+          pip install flet-cli
       - name: Build APK
-        run: flet build apk
+        run: |
+          export FLUTTER_ROOT=/opt/flutter
+          flet build apk --yes --flutter-flags "--no-interactive"
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: my-apk
-          path: build/apk
+          name: smartstore-apk
+          path: build/apk/*.apk
