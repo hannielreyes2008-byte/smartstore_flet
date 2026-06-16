@@ -10,14 +10,11 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install flet
-        run: |
-          pip install flet
+        run: pip install flet
       - name: Build APK
-        run: |
-          export FLUTTER_ROOT=/opt/flutter
-          flet build apk --yes --flutter-flags "--no-interactive"
+        run: echo "y" | flet build apk
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: my-apk
-          path: build/apk/*.apk
+          path: build/apk
