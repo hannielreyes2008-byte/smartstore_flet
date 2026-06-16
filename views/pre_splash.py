@@ -5,7 +5,7 @@ import time
 def pre_splash_view(page: ft.Page, on_complete):
     page.clean()
     page.update()
-    page.bgcolor = "#EFA520"
+    page.bgcolor = "#EF7620"
 
     progress = ft.ProgressBar(width=200, color="white", bgcolor="#EFA52088")
 
