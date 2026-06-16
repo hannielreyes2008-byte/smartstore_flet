@@ -1,0 +1,10 @@
+app:
+  title: SmartStore PyMES
+
+flutter:
+  assets:
+    - assets/
+  icons:
+    - logo.png
+  args:
+    - --enable-experiment=native-assets
